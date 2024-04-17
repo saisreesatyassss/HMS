@@ -3,18 +3,18 @@ import { FAQ } from "@/types/faq";
 const faqData: FAQ[] = [
   {
     id: 1,
-    quest: "Lorem ipsum dolor sit amet, consectetur",
-    ans: "We provide digital experience services to startups and small businesses. We help our clients succeed by creating brand identities, digital experiences.",
+    quest: "What are the visiting hours of the hospital?",
+    ans: "The visiting hours of the hospital are from 9:00 AM to 8:00 PM on weekdays and from 10:00 AM to 6:00 PM on weekends.",
   },
   {
     id: 2,
-    quest: "Lorem ipsum dolor sit amet, consectetur",
-    ans: "We provide digital experience services to startups and small businesses. We help our clients succeed by creating brand identities, digital experiences.",
+    quest: "How can I book an appointment with a doctor?",
+    ans: "You can book an appointment with a doctor by logging into your patient portal or by calling our appointment hotline at [insert phone number].",
   },
   {
     id: 3,
-    quest: "Lorem ipsum dolor sit amet, consectetur",
-    ans: "We provide digital experience services to startups and small businesses. We help our clients succeed by creating brand identities, digital experiences.",
+    quest: "What should I do in case of a medical emergency?",
+    ans: "In case of a medical emergency, please call 911 immediately or proceed to the nearest emergency room. If you are within our hospital premises, you can also notify the nearest hospital staff member for assistance.",
   },
 ];
 

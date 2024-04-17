@@ -32,9 +32,7 @@ const CTA = () => {
                 Join With Us & Access Seamless Healthcare At Your Fingertips
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                convallis tortor eros. Donec vitae tortor lacus. Phasellus
-                aliquam ante in maximus.
+                 Seamlessly access healthcare solutions from anywhere with ease. Experience streamlined care tailored to your needs, ensuring convenience and efficiency.
               </p>
             </motion.div>
             <motion.div

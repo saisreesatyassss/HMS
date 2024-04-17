@@ -30,6 +30,7 @@ const Signup = () => {
     e.preventDefault();
     // Add your form submission logic here, including sending the image data
     // You can access the image data using the 'image' state variable
+    
   };
 
   return (

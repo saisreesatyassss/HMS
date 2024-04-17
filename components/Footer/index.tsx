@@ -56,7 +56,7 @@ const Footer = () => {
                   href="#"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
-                  ramtanniru2@gmail.com
+                  saisreesatyassss@gmail.com
                 </a> */}
                 <p className="text-itemtitle font-medium text-black dark:text-white">
                   Contact
@@ -65,7 +65,7 @@ const Footer = () => {
                   href="#"
                   className="mb-1.5 text-sectiontitle"
                 >
-                  ramtanniru2@gmail.com
+                  saisreesatyassss@gmail.com
                 </a>
               </motion.div>
 
@@ -354,7 +354,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/ramtanniru2" aria-label="social icon">
+                  <a href="https://twitter.com/saisreesatyassss" aria-label="social icon">
                     <svg
                       className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                       width="24"

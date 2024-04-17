@@ -13,7 +13,7 @@ const Integration = () => {
             headerInfo={{
               title: `INTEGRATIONS`,
               subtitle: `Remotely Maintain Your Data, From Anywhere, Anytime.`,
-              description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
+              description: `Effortlessly manage your data remotely, ensuring seamless access and control from any location, at any time. Explore the convenience of remote data maintenance for streamlined operations.`,
             }}
           />
 

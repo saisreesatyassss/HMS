@@ -140,8 +140,7 @@ const About = () => {
                 </span>
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                ultricies lacus non fermentum ultrices. Fusce consectetur le.
+                Offering a concise preliminary health analysis feature for your app, providing users with quick insights based on inputted symptoms and medical history.
               </p>
               <div>
                 <a
