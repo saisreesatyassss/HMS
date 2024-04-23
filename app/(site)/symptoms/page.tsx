@@ -138,10 +138,7 @@ const symptomsPage = () => {
     <div className="p-25 pb-15 mx-5 md:mx-20 md:pt-40 md:pb-30 flex flex-col gap-7">
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-bold text-black dark:text-white ">Symptom analyser</h1>
-        <p className=""> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-         Quidem officia suscipit cupiditate est sint illum veniam magni 
-         enim tempora nisi odio deserunt, labore corrupti quae praesentium, cumque
-          repellat expedita iste. </p>
+        <p className=""> A symptom analyzer is a tool or software application designed to assist individuals in identifying potential health conditions or diseases based on reported symptoms.</p>
       </div>
       <div className="flex flex-col gap-5">
         <ul className="flex flex-wrap justify-start gap-5">
