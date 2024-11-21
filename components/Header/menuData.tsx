@@ -42,6 +42,18 @@ const menuData: Menu[] = [
         newTab: false,
         path: "/docs",
       },
+      {
+        id: 34,
+        title: "DocImage",
+        newTab: false,
+        path: "/image",
+      },
+      {
+        id: 35,
+        title: "DocReport",
+        newTab: false,
+        path: "/reports",
+      },
     ],
   },
 ];

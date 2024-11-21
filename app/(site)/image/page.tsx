@@ -1,64 +1,43 @@
-"use client" 
 
+"use client";
 
 import React, { useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const Reports = () => {
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [pdfUrl, setPdfUrl] = useState<string>("");
+  const [uploadedImage, setUploadedImage] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [userPrompt, setUserPrompt] = useState("");
   const [reportsInsights, setReportsInsights] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-const MODEL_NAME = "gemini-pro";
-const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
+  const MODEL_NAME = "gemini-pro";
+  const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    setUploadedFile(file || null);
+    setUploadedImage(file || null);
   };
 
-  const handlePdfUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPdfUrl(e.target.value);
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImageUrl(e.target.value);
   };
 
   const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserPrompt(e.target.value);
   };
 
-// Advanced response formatter
-const formatResponse = (response: string) => {
-  // Remove asterisks and clean up formatting
-  let formattedResponse = response.replace(/[\*]{1,2}/g, '');
-  
-  // Split by numbered sections and format
-  const sectionPattern = /(\d+\.\s*[^0-9]+)(?=\d+\.|$)/g;
-  const sections: string[] = [];
-  
-  // Explicitly type the match variable
-  let match: RegExpExecArray | null = null;
-  
-  while ((match = sectionPattern.exec(formattedResponse)) !== null) {
-    // Safely access the second capture group
-    if (match[1]) {
-      sections.push(match[1].trim());
-    }
-  }
-  
-  // If no sections found, return original response
-  return sections.length > 0 
-    ? sections.map((section) => `${section}\n`).join('\n').trim()
-    : formattedResponse;
-};
-
+  const formatResponse = (response: string) => {
+    let formattedResponse = response.replace(/[\*]{1,2}/g, "");
+    return formattedResponse.trim();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!uploadedFile && !pdfUrl) {
-      setError("Please upload a PDF file or provide a PDF URL.");
+    if (!uploadedImage && !imageUrl) {
+      setError("Please upload an image or provide an image URL.");
       return;
     }
 
@@ -67,37 +46,20 @@ const formatResponse = (response: string) => {
     setReportsInsights("MediBot is thinking...");
 
     try {
-      // PDF Extraction
-      let extractedText = "";
-      const apiUrl = "https://face-api-0i86.onrender.com/extract_pdf";
-
-      const fetchOptions: RequestInit = uploadedFile 
-        ? {
-            method: "POST",
-            body: (() => {
-              const formData = new FormData();
-              formData.append("pdf_file", uploadedFile);
-              return formData;
-            })()
-          }
-        : {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ pdf_url: pdfUrl })
-          };
-
-      const response = await fetch(apiUrl, fetchOptions);
-
-      if (!response.ok) {
-        throw new Error("Failed to process the PDF. Please try again.");
-      }
-
-      const data = await response.json();
-      extractedText = data.text || "No text extracted.";
+      // Placeholder for image extraction logic (if needed).
+      const imageReference = uploadedImage
+        ? "Uploaded medical image"
+        : `Image at URL: ${imageUrl}`;
 
       // AI Analysis using Google Gemini
       const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+
+      const parts = [
+        { text: `Analyze the medical relevance of the following image:\n${imageReference}\n` },
+        { text: `User Prompt: ${userPrompt}\n` },
+        { text: "If the image relates to medical issues, provide detailed suggestions or guidance. If not, indicate 'Not related to medical issues'." },
+      ];
 
       const generationConfig = {
         temperature: 0.1,
@@ -105,12 +67,6 @@ const formatResponse = (response: string) => {
         topP: 1,
         maxOutputTokens: 2048,
       };
-
-      const parts = [
-        { text: `Extracted PDF Text:\n${extractedText}\n\n` },
-        { text: `User Request: ${userPrompt}\n\n` },
-        { text: "Provide a detailed medical analysis based on the extracted text and user's specific request." },
-      ];
 
       const result = await model.generateContent({
         contents: [{ role: "user", parts }],
@@ -120,7 +76,6 @@ const formatResponse = (response: string) => {
       const aiResponse = result.response;
       const formattedInsights = formatResponse(aiResponse.text());
       setReportsInsights(formattedInsights);
-    //   setReportsInsights(aiResponse.text());
       setIsLoading(false);
     } catch (error) {
       setError("Failed to process the request. Please try again.");
@@ -129,42 +84,41 @@ const formatResponse = (response: string) => {
     }
   };
 
-  // Rest of the component remains the same as in the previous version
   return (
-<div className="pt-20 pb-15 md:pt-40 md:pb-30 mx-10 md:mx-20">
+    <div className="pt-20 pb-15 md:pt-40 md:pb-30 mx-10 md:mx-20">
       <form
         className="bg-[#1c2136] border-slate-700 border rounded-md w-full p-5"
         onSubmit={handleSubmit}
       >
         <h2 className="text-white text-xl font-bold mb-4">
-          Upload Medical Reports or Enter a PDF URL
+          Upload Medical Image or Enter an Image URL
         </h2>
 
-        {/* File Upload */}
+        {/* Image Upload */}
         <div className="mb-4">
-          <label htmlFor="file-upload" className="text-white block mb-2">
-            Upload Medical Report (Optional)
+          <label htmlFor="image-upload" className="text-white block mb-2">
+            Upload Medical Image (Optional)
           </label>
           <input
             type="file"
-            id="file-upload"
-            accept=".pdf"
+            id="image-upload"
+            accept="image/*"
             className="text-white"
-            onChange={handleFileUpload}
+            onChange={handleImageUpload}
           />
         </div>
 
-        {/* PDF URL Input */}
+        {/* Image URL Input */}
         <div className="mb-4">
-          <label htmlFor="pdf-url" className="text-white block mb-2">
-            Or Provide PDF URL (Optional)
+          <label htmlFor="image-url" className="text-white block mb-2">
+            Or Provide Image URL (Optional)
           </label>
           <input
             type="text"
-            id="pdf-url"
-            placeholder="Enter PDF URL"
-            value={pdfUrl}
-            onChange={handlePdfUrlChange}
+            id="image-url"
+            placeholder="Enter Image URL"
+            value={imageUrl}
+            onChange={handleImageUrlChange}
             className="w-full p-2 rounded-md bg-slate-800 text-white border border-slate-600"
           />
         </div>
@@ -177,7 +131,7 @@ const formatResponse = (response: string) => {
           <input
             type="text"
             id="user-prompt"
-            placeholder="E.g., 'Summarize key medical findings' or 'Identify potential health risks'"
+            placeholder="E.g., 'Identify the medical condition' or 'Provide treatment suggestions'"
             value={userPrompt}
             onChange={handlePromptChange}
             className="w-full p-2 rounded-md bg-slate-800 text-white border border-slate-600"
@@ -217,8 +171,8 @@ const formatResponse = (response: string) => {
       <div className="mt-5 text-center text-red-500 font-bold">
         This is AI-generated content. Please consult a doctor for professional advice.
       </div>
-    </div>  );
+    </div>
+  );
 };
 
 export default Reports;
-

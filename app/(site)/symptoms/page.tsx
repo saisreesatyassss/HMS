@@ -81,6 +81,29 @@ const symptomsPage = () => {
       diseaseDescription: string;
     };
     
+    const formatResponse = (response: string) => {
+  // Remove asterisks and clean up formatting
+  let formattedResponse = response.replace(/[\*]{1,2}/g, '');
+  
+  // Split by numbered sections and format
+  const sectionPattern = /(\d+\.\s*[^0-9]+)(?=\d+\.|$)/g;
+  const sections: string[] = [];
+  
+  // Explicitly type the match variable
+  let match: RegExpExecArray | null = null;
+  
+  while ((match = sectionPattern.exec(formattedResponse)) !== null) {
+    // Safely access the second capture group
+    if (match[1]) {
+      sections.push(match[1].trim());
+    }
+  }
+  
+  // If no sections found, return original response
+  return sections.length > 0 
+    ? sections.map((section) => `${section}\n`).join('\n').trim()
+    : formattedResponse;
+};
     function parseDiseaseDescriptions(text: string): DiseaseDescription[] {
       // Split the text into individual disease descriptions using asterisks (*)
       const descriptions = text.split('*');
@@ -123,7 +146,8 @@ const symptomsPage = () => {
     console.log(formattedData);
     const response = result.response;
     const arr = parseDiseaseDescriptions(response.text());
-    setResult(response.text());
+
+    setResult(formatResponse(response.text()));
   };
 
   const toggleSymptom = (symptom: string) => {
@@ -151,7 +175,7 @@ const symptomsPage = () => {
         </ul>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-fit" onClick={generateContent}>Generate content</button>
       </div>
-      <div className="bg-[#1c2136] border-slate-700 border rounded-md h-30 h-fit p-3">
+      <div className="bg-[#1c2136] border-slate-700 border rounded-md h-30 h-fit p-3 whitespace-pre-wrap">
         {result}
       </div>
     </div>

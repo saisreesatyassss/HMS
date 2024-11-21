@@ -53,29 +53,34 @@ const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
       contents: [{ role: "user", parts }],
       generationConfig,
      });
-
-    // const generativelanguageModel = model.generateContent;
-    // const [response] = await generativelanguageModel.arguments({
-    //   initialText: prompt,
-    //   numReturnValues: 1,
-    // });
+ 
     const response = result.response;
-    setDietPlan(response.text()); 
     // Sample response data
-// const rawResponse = dietPlan;
 
-// // Function to format the response
-// const formatResponse = (rawResponse) => {
-//   const sections = rawResponse.split('').filter(section => section.trim() !== '');
-
-//   return sections.map(section => {
-//     const lines = section.split('*').filter(line => line.trim() !== '');
-//     const title = lines[0].trim().replace(':', '');
-//     const items = lines.slice(1).map(item => item.trim());
-    
-//     return { title, items };
-//   });
-// };
+const formatResponse = (response: string) => {
+  // Remove asterisks and clean up formatting
+  let formattedResponse = response.replace(/[\*]{1,2}/g, '');
+  
+  // Split by numbered sections and format
+  const sectionPattern = /(\d+\.\s*[^0-9]+)(?=\d+\.|$)/g;
+  const sections: string[] = [];
+  
+  // Explicitly type the match variable
+  let match: RegExpExecArray | null = null;
+  
+  while ((match = sectionPattern.exec(formattedResponse)) !== null) {
+    // Safely access the second capture group
+    if (match[1]) {
+      sections.push(match[1].trim());
+    }
+  }
+  
+  // If no sections found, return original response
+  return sections.length > 0 
+    ? sections.map((section) => `${section}\n`).join('\n').trim()
+    : formattedResponse;
+};
+    setDietPlan(formatResponse(response.text())); 
 
 // // Formatted response
 // const formattedResponse = formatResponse(rawResponse);
@@ -196,7 +201,7 @@ const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
               </form>
             </div>
         </div>
-        <div className="bg-[#1c2136] border-slate-700 border rounded-md w-full p-3" >{dietPlan}</div>
+        <div className="bg-[#1c2136] border-slate-700 border rounded-md w-full p-3 whitespace-pre-wrap" >{dietPlan}</div>
     </div>
   );
 };
