@@ -1,22 +1,4 @@
-// import React from "react";
-// import Contact from "@/components/Contact";
-// import { Metadata } from "next";
-
-// export const metadata: Metadata = {
-//   title: "Support Page  ",
-//   description: "This is Support page ",
-//   // other metadata
-// };
-
-// const SupportPage = () => {
-//   return (
-//     <div className="pb-20 pt-40">
-//       <Contact />
-//     </div>
-//   );
-// };
-
-// export default SupportPage;
+ 
 "use client"
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import React, { useState, useEffect } from "react";
@@ -55,12 +37,7 @@ const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
       topP: 1,
       maxOutputTokens: 2048,
     };
-    // const prompt = `Generate a personalized diet plan for a ${formData.age} year old ${formData.gender}. ` +
-    //   `Their activity level is ${formData.activityLevel}, weight is ${formData.weight} lbs, and height is ${formData.height} inches. ` +
-    //   `Their goal is to ${formData.goal}. ` +
-    //   `They are allergic to ${formData.allergies}. ` +
-    //   `They like ${formData.likedFood} and dislike ${formData.dislikedFood}. ` +
-    //   Include a variety of foods and serving sizes.;
+ 
     const parts = [
       { text:  `Generate a personalized diet plan for a ${formData.age} year old ${formData.gender}. ` +
       `Their activity level is ${formData.activityLevel}, weight is ${formData.weight} lbs, and height is ${formData.height} inches. ` +

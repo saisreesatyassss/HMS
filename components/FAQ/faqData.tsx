@@ -9,7 +9,7 @@ const faqData: FAQ[] = [
   {
     id: 2,
     quest: "How can I book an appointment with a doctor?",
-    ans: "You can book an appointment with a doctor by logging into your patient portal or by calling our appointment hotline at [insert phone number].",
+    ans: "You can book an appointment with a doctor by logging into your patient portal or by calling our appointment hotline at 7842446454 .",
   },
   {
     id: 3,

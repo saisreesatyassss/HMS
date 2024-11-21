@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Login Page  ",
-  description: "This is Login page for Startup Pro",
+  description: "This is Login page  ",
   // other metadata
 };
 
