@@ -247,7 +247,7 @@ const VoiceAssistant = () => {
         // const testResult = await modelInstance.generateContent(initialPrompt);
         // const testResponse = await testResult.response.text();
         
-        // setModel(modelInstance);
+        setModel(modelInstance);
         setIsModelReady(true);
         console.log('AI model initialized successfully');
         // speakResponse(testResponse);
