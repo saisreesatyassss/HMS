@@ -12,9 +12,14 @@ const Reports = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const MODEL_NAME = "gemini-pro";
-  const API_KEY = "AIzaSyCuJ2v83jWF_zhBY7NJLLYuP78GX6veKC0";
-
+const MODEL_NAME = process.env.NEXT_PUBLIC_MODEL_NAME;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+if (!API_KEY) {
+  throw new Error("API_KEY is missing in environment variables");
+}
+if (!MODEL_NAME) {
+  throw new Error("API_KEY is missing in environment variables");
+}
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     setUploadedImage(file || null);
