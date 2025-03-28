@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
 const MODEL_NAME = "gemini-pro";
-const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
+const API_KEY = "AIzaSyCuJ2v83jWF_zhBY7NJLLYuP78GX6veKC0";
 
 const symptoms = [
   "Headache",

@@ -13,7 +13,7 @@ const Reports = () => {
   const [isLoading, setIsLoading] = useState(false);
 
 const MODEL_NAME = "gemini-pro";
-const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
+const API_KEY = "AIzaSyCuJ2v83jWF_zhBY7NJLLYuP78GX6veKC0";
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

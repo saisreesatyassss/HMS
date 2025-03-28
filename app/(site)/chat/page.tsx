@@ -15,7 +15,7 @@
 //   Activity 
 // } from 'lucide-react';
 // const MODEL_NAME = "gemini-pro";
-// const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
+// const API_KEY = "AIzaSyCuJ2v83jWF_zhBY7NJLLYuP78GX6veKC0";
 
 // const ChatbotPage = () => {
 //   const [mode, setMode] = useState('cyber');
@@ -394,7 +394,7 @@ import {
 } from 'lucide-react';
 
 const MODEL_NAME = "gemini-pro";
-const API_KEY = "AIzaSyDcYKeMNWinAMk4GHGaN-WuhLsDMltRHds";
+const API_KEY = "AIzaSyCuJ2v83jWF_zhBY7NJLLYuP78GX6veKC0";
 
 const ChatbotPage = () => {
   const [user, setUser] = useState<User | null>(null);
