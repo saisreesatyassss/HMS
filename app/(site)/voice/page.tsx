@@ -177,42 +177,7 @@ const VoiceAssistant = () => {
   };
 
   return (
-    // <div className="flex flex-col h-screen bg-gray-50 items-center justify-center">
-    //   <div className="text-center space-y-8">
-    //     <div className="flex items-center justify-center space-x-4">
-    //       <Bot className="w-12 h-12 text-blue-500" />
-    //       <h1 className="text-2xl font-semibold">Voice Medical Assistant</h1>
-    //     </div>
-
-    //     <button
-    //       onClick={toggleListening}
-    //       disabled={isResponding || !isModelReady}
-    //       className={`
-    //         p-8 rounded-full transition-all duration-200
-    //         ${!isModelReady 
-    //           ? 'bg-gray-300 cursor-not-allowed'
-    //           : isListening 
-    //             ? 'bg-red-500 hover:bg-red-600 scale-110' 
-    //             : isResponding
-    //               ? 'bg-blue-300 cursor-not-allowed'
-    //               : 'bg-blue-500 hover:bg-blue-600'
-    //         }
-    //       `}
-    //     >
-    //       <Mic className={`w-8 h-8 text-white ${isListening ? 'animate-pulse' : ''}`} />
-    //     </button>
-
-    //     <div className="text-sm text-gray-500">
-    //       {!isModelReady 
-    //         ? 'Initializing...' 
-    //         : isListening 
-    //           ? 'Listening...' 
-    //           : isResponding 
-    //             ? 'Responding...' 
-    //             : 'Click to speak'}
-    //     </div>
-    //   </div>
-    // </div>
+    
 
     <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900 items-center justify-center">
   <div className="text-center space-y-8">
